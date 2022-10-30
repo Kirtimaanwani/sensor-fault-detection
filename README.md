@@ -5,19 +5,19 @@ The Air Pressure System (APS) is a critical component of a heavy-duty vehicle th
 Create folder named "credentials" and put "CREDENTIALS.py" file in it and put all credentials and secrets in it
 
 # Authentication Related Variables
-SECURITY_PROTOCOL= ""
+SECURITY_PROTOCOL= ""  ,  
 SSL_MACHENISM=""
 
 
 # Cloud api details
-API_KEY = "" 
-API_SECRET_KEY = ""
-BOOTSTRAP_SERVER = "" 
+API_KEY = ""   , 
+API_SECRET_KEY = ""   , 
+BOOTSTRAP_SERVER = ""     
 
 
 # Schema Related variables
-ENDPOINT_SCHEMA_URL  = "" 
-SCHEMA_REGISTRY_API_KEY = "" 
+ENDPOINT_SCHEMA_URL  = ""    , 
+SCHEMA_REGISTRY_API_KEY = ""    , 
 SCHEMA_REGISTRY_API_SECRET = ""
 
 
