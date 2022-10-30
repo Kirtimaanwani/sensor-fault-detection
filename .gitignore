@@ -129,12 +129,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-<<<<<<< HEAD
 # Credentials
 
 ./credential
 credential/
-=======
-# credentials
-CREDENTIALS.py
->>>>>>> 282303e341ba3d82692067afb9c62d1a05f905f3
