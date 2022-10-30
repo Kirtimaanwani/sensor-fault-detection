@@ -1,3 +1,4 @@
 pymongo[srv]==4.2.0
 from_root
+pandas
 -e .  #editable information
