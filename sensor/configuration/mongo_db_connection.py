@@ -1,7 +1,7 @@
 # write code that shown in class here for mongodb_connection
 import pymongo
 from sensor.constant.database import DATABASE_NAME
-from sensor.credential.CREDENTIAL import MONGO_DB_URL
+from credential.CREDENTIAL import MONGO_DB_URL
 import certifi
 ca = certifi.where()
 
