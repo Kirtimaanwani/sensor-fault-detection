@@ -5,6 +5,7 @@ from sensor.entity.config_entity import DataIngestionConfig
 from sensor.entity.artifact_entity import DataIngestionArtifact
 from pandas import DataFrame
 from sensor.data_access.sensor_data import SensorData
+from sklearn.model_selection import train_test_split
 
 
 class DataIngestion:
@@ -29,8 +30,11 @@ class DataIngestion:
             feature_store_file_path = self.data_ingestion_config.feature_store_file_path
 
             # now Creating folder for feature store
+            logging.info("Creating folder for feature store")
             dir_path = os.path.dirname(feature_store_file_path)
             os.makedirs(dir_path, exist_ok=True)
+            
+            logging.info("Exporting csv in feature store")
             dataframe.to_csv(feature_store_file_path, index=False, header=False)
             
             return dataframe
@@ -45,7 +49,32 @@ class DataIngestion:
         """
         Feature store dataset will be split into train and test file
         """
-        pass
+        try:
+            logging.info("Performing train test  split on the dataframe")
+            train_set, test_set = train_test_split(
+                dataframe,
+                test_size=self.data_ingestion_config.train_test_split_ratio
+                )
+            
+            logging.info("train test split DONE")
+            logging.info("Preparing to exit split_data_as_train_test method of Data_Ingestion class")
+
+            dir_path = os.path.dirname(self.data_ingestion_config.training_file_path)
+            logging.info("Creating folder for training file and test file")
+            os.makedirs(dir_path, exist_ok=True)
+
+            logging.info("Exporring train and test file")
+            
+            train_set.to_csv(self.data_ingestion_config.training_file_path, index=False, header=True)
+            test_set.to_csv(self.data_ingestion_config.test_file_path, index=False, header=True)
+
+            logging.info("Exported train and test file")
+            logging.info("Exited split_data_as_train_test method of Data_Ingestion class")
+
+
+        except Exception as e:
+            raise SensorException(e, sys)
+
 
 
 
