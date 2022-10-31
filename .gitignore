@@ -133,3 +133,7 @@ dmypy.json
 
 ./credential
 credential/
+
+# Artifact
+./artifact
+artifact/
