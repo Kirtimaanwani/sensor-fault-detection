@@ -5,7 +5,7 @@ from sensor.logger import logging
 
 
 def read_yaml_file(file_path: str) -> dict:
-    logging.info(f"Reading yaml file from {[file_path]}")
+    logging.info(f"Reading yaml file from [{file_path}]")
     try:
         with open(file_path, "rb") as yaml_file:
             return yaml.safe_load(yaml_file) 
@@ -14,7 +14,7 @@ def read_yaml_file(file_path: str) -> dict:
 
 
 def write_yaml_file(file_path: str, content: object, replace: bool = False)->None:
-    logging.info(f"Writting yaml file at {[file_path]}, replace: {[replace]}")
+    logging.info(f"Writting yaml file at [{file_path}], replace: [{replace}]")
 
     try:
         if replace:
