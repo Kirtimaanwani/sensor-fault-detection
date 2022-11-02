@@ -16,14 +16,22 @@ class DataValidation:
                 data_ingestion_artifact:DataIngestionArtifact,
                 data_validation_config:DataValidationConfig):  
         try:
-            pass
+            self.data_ingestion_artifact = data_ingestion_artifact
+            self.data_validation_config = data_validation_config
         except Exception as e:
             raise SensorException(e,sys)
 
 
     @staticmethod
     def read_data(file_path)->pd.DataFrame:
-        pass
+
+        f"""
+        Reading data from {[file_path]} and returning its DataFrame
+        """
+        try:
+            return pd.read_csv(file_path)
+        except Exception as e:
+            raise SensorException(e,sys)
 
 
     def validate_number_of_columns(self)->bool:
@@ -39,8 +47,16 @@ class DataValidation:
 
 
     def initiate_data_validation(self)-> DataValidationArtifact:
+        """
+        Initiating data validation
+        """
         try:
-            pass
+            train_file_path = self.data_ingestion_artifact.trained_file_path
+            test_file_path = self.data_ingestion_artifact.test_file_path
+
+            train_dataframe = DataValidation.read_data(train_file_path)
+            test_dataframe = DataValidation.read_data(test_file_path)
+
         except Exception as e:
             raise SensorException(e, sys)
 
