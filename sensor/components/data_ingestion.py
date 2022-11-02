@@ -6,13 +6,15 @@ from sensor.entity.artifact_entity import DataIngestionArtifact
 from pandas import DataFrame
 from sensor.data_access.sensor_data import SensorData
 from sklearn.model_selection import train_test_split
-
+from sensor.utils.mail_utils import read_yaml_file
+from sensor.constant.training_pipeline import SCHEMA_FILE_PATH
 
 class DataIngestion:
 
     def __init__(self, data_ingestion_config:DataIngestionConfig):
         try:     
             self.data_ingestion_config = data_ingestion_config
+            self._schema_config = read_yaml_file(SCHEMA_FILE_PATH)
         except Exception as e:
             raise SensorException(e, sys)
 
@@ -85,6 +87,9 @@ class DataIngestion:
             logging.info("Initiating data ingestion...")
             dataframe = self.export_data_into_feature_store()
             
+            logging.info("Dropping Unnecessary columns from dataset as per mentioned in schema")
+            dataframe = dataframe.drop(self._schema_config["drop_columns"], axis=1)
+
             self.split_data_as_train_test(dataframe=dataframe)
 
             data_ingestion_artifact = DataIngestionArtifact(trained_file_path=self.data_ingestion_config.training_file_path,
