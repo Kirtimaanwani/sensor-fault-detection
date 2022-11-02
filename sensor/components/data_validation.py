@@ -11,6 +11,16 @@ import pandas as pd
 
 class DataValidation:
 
+    def __init__(
+                self,
+                data_ingestion_artifact:DataIngestionArtifact,
+                data_validation_config:DataValidationConfig):  
+        try:
+            pass
+        except Exception as e:
+            raise SensorException(e,sys)
+
+
     @staticmethod
     def read_data(file_path)->pd.DataFrame:
         pass
