@@ -2,7 +2,7 @@ import yaml
 from sensor.exception import SensorException
 import os, sys
 from sensor.logger import logging
-
+import dill
 
 def read_yaml_file(file_path: str) -> dict:
     logging.info(f"Reading yaml file from [{file_path}] from main_utils class")
