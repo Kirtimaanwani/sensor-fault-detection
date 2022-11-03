@@ -80,10 +80,10 @@ class DataValidationConfig():
         )
 
 
-class DataTransformation():
+class DataTransformationConfig():
     
     def __init__(self, training_pipeline_config: TrainingPipelineConfig):
-        logging.info("Creating DataTransformation config")
+        logging.info("Creating DataTransformationConfig")
         self.data_transformation_dir: str = os.path.join(
                                                     training_pipeline_config.artifact_dir, 
                                                         training_pipeline.DATA_TRANS_DIR_NAME
