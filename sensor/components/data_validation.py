@@ -159,6 +159,9 @@ class DataValidation:
             )
 
             logging.info(f"Got data validation Artifact as [{data_validation_artifact}]")
+
+            return data_validation_artifact
+            # return artifacts that are created 
         except Exception as e:
             raise SensorException(e, sys)
 
