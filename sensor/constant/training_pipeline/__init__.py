@@ -29,7 +29,7 @@ DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO: float = 0.2  # test_size
 
 
 """
-Data Validation related constant start with DATA_VALIDATION variable Name
+Data Validation related constant start with DATA_VALIDATION_variable_Name
 """
 DATA_VALIDATION_DIR_NAME:str = "data_validation"
 DATA_VALIDATION_VALID_DIR:str = "validated"
@@ -37,5 +37,10 @@ DATA_VALIDATION_INVALID_DIR:str = "invalid"
 DATA_VALIDATION_DRIFT_REPORT_DIR: str = "drift_report"
 DATA_VALIDATION_DRIFT_REPORT_FILE_NAME: str = "drift_report.yaml"
 
-
+"""
+Data Transformation related constants starts with DATA_TRANS_variable_Name
+"""
+DATA_TRANS_DIR_NAME:str = "data_transformation"
+DATA_TRANS_TRANSFORMED_DATA_DIR:str = "transformed"
+DATA_TRANS_TRANSFORMED_OBJECT_DIR:str = "transformed_object"
 
