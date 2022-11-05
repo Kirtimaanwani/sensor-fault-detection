@@ -1,6 +1,9 @@
 
 from sensor.exception import SensorException
 import os, sys
+from sensor.constant.training_pipeline import SAVED_MODEL_DIR, MODEL_FILE_NAME
+from sensor.logger import logging
+
 
 class TargetValueMapping:
     def __init__(self):
@@ -35,3 +38,52 @@ class SensorModel:
             return y_hat
         except Exception as e:
             raise SensorException(e, sys)
+
+
+class ModelResolver:
+    """
+    class to check if any model exists in the saved model directory and return path and status for latest model which is in latest timestamp directory
+    """
+    def __init__(self,model_dir=SAVED_MODEL_DIR):
+        try:
+            self.model_dir = model_dir
+        except Exception as e:
+            raise SensorException(e, sys)
+    
+
+    def get_best_model_path(self)->str:
+        try:
+            timestamps = list(map(int,os.listdir(self.model_dir)))  # getting list of timestamp diractory in saved model
+            latest_timestamp = max(timestamps)      # getting latest timestamp directory
+            latest_model_path= os.path.join(self.model_dir,
+                                                f"{latest_timestamp}",
+                                                    MODEL_FILE_NAME)
+            return latest_model_path
+        except Exception as e:
+            raise SensorException(e, sys)
+
+
+    def is_model_exists(self)->bool:
+        try:
+            if not os.path.exists(self.model_dir):  # if model directory does not exist -> return false
+
+                logging.info(f"{self.model_dir} does not exist")
+                return False
+            timestamps = os.listdir(self.model_dir)
+
+            if len(timestamps)==0:          # if model directory exists but no timestamp directory init -> return false
+                logging.info(f"{self.model_dir} exists but no timestamp directory exists")
+                return False      
+                
+            latest_model_path = self.get_best_model_path()   # if timestamp directory exists , if model file not exist -> return false
+            if not os.path.exists(latest_model_path):
+                logging.info(f"{self.model_dir}/latest_timestamp directory exists but no model.pkl file exists")
+                return False
+            
+            logging.info(f"Model file exists in {self.model_dir}")
+            return True                 # correct latest model exists-> return true
+        except Exception as e:
+            raise SensorException(e, sys)
+
+
+
