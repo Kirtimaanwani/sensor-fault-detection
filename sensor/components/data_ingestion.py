@@ -6,7 +6,7 @@ from sensor.entity.artifact_entity import DataIngestionArtifact
 from pandas import DataFrame
 from sensor.data_access.sensor_data import SensorData
 from sklearn.model_selection import train_test_split
-from sensor.utils.mail_utils import read_yaml_file
+from sensor.utils.main_utils import read_yaml_file
 from sensor.constant.training_pipeline import SCHEMA_FILE_PATH
 
 class DataIngestion:

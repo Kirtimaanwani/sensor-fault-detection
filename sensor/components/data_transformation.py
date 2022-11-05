@@ -17,7 +17,7 @@ from sensor.exception import SensorException
 from sensor.logger import logging
 
 from sensor.ml.model.estimator import TargetValueMapping
-from sensor.utils.mail_utils import (
+from sensor.utils.main_utils import (
                                      save_numpy_array_data, 
                                         save_object
                                             )
@@ -166,7 +166,7 @@ class DataTransformation:
                 transformed_train_file_path=self.data_transformation_config.transformed_train_file_path,
                 transformed_test_file_path=self.data_transformation_config.transformed_test_file_path,
             )
-            logging.info(f"Data Transformation Artifact:[{data_transformation_artifact}]")
+            logging.info(f"Data Transformation Artifact:[{data_transformation_artifact}]\n\n")
             return data_transformation_artifact
         except Exception as e:
             raise SensorException(e, sys)

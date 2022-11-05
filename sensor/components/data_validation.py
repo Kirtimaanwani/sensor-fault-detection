@@ -6,7 +6,7 @@ from sensor.constant.training_pipeline import SCHEMA_FILE_PATH
 from sensor.entity.config_entity import DataValidationConfig
 from sensor.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact
 
-from sensor.utils.mail_utils import read_yaml_file, write_yaml_file
+from sensor.utils.main_utils import read_yaml_file, write_yaml_file
 from scipy.stats import ks_2samp
 
 
@@ -158,7 +158,7 @@ class DataValidation:
                 drift_report_file_path = self.data_validation_config.drift_report_file_path,
             )
 
-            logging.info(f"Got data validation Artifact as [{data_validation_artifact}]")
+            logging.info(f"Got data validation Artifact as [{data_validation_artifact}]\n\n")
 
             return data_validation_artifact
             # return artifacts that are created 
