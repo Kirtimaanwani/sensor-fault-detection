@@ -84,9 +84,11 @@ class TrainPipeline:
                                  model_trainer_artifact:ModelTrainerArtifact,
                                 )->ModelEvaluationArtifact:
         try:
+            logging.info("starting model evaluation")
             model_eval_config = ModelEvaluationConfig(self.training_pipeline_config)
             model_eval = ModelEvaluation(model_eval_config, data_validation_artifact, model_trainer_artifact)
             model_eval_artifact = model_eval.initiate_model_evaluation()
+            logging.info("returning model_eval_artifact")
             return model_eval_artifact
         except  Exception as e:
             raise  SensorException(e,sys)
