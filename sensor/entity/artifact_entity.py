@@ -36,26 +36,11 @@ class ModelTrainerArtifact:
 
 
 @dataclass
-<<<<<<< HEAD
-=======
-class ModelTrainerArtifact:
-    trained_model_file_path: str
-    train_metric_artifact: ClassificationMetricArtifact
-    test_metric_artifact: ClassificationMetricArtifact
-
-
-@dataclass
->>>>>>> c593cf0cd05d9bb24747d50a988be696f9ea7ef8
 class ModelEvaluationArtifact:
     is_model_accepted: bool
     improved_accuracy: float
     best_model_path: str
     trained_model_path: str
     train_model_metric_artifact: ClassificationMetricArtifact
-<<<<<<< HEAD
-    best_model_metric_artifact: ClassificationMetricArtifact
-=======
     best_model_metric_artifact: ClassificationMetricArtifact
 
-
->>>>>>> c593cf0cd05d9bb24747d50a988be696f9ea7ef8
