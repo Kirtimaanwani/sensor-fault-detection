@@ -132,9 +132,18 @@ class ModelEvaluationConfig:
         self.model_evaluation_dir: str = os.path.join(
                                                         training_pipeline_config.artifact_dir, 
                                                             training_pipeline.MODEL_EVALUATION_DIR_NAME
+<<<<<<< HEAD
                                                         )
         self.report_file_path = os.path.join(
                                                 self.model_evaluation_dir,
                                                     training_pipeline.MODEL_EVALUATION_REPORT_NAME
                                                         )
         self.change_threshold = training_pipeline.MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
+=======
+                                                    )
+        self.report_file_path = os.path.join(self.model_evaluation_dir,
+                                                training_pipeline.MODEL_EVALUATION_REPORT_NAME)
+        self.change_threshold = training_pipeline.MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
+
+
+>>>>>>> c593cf0cd05d9bb24747d50a988be696f9ea7ef8

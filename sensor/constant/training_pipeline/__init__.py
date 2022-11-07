@@ -1,8 +1,10 @@
 # Have constants related only to the traning pipeline.
 
 import os
-from sensor.constant.s3_bucket import TRAINING_BUCKET_NAME
+# from sensor.constant.s3_bucket import TRAINING_BUCKET_NAME
 
+
+SAVED_MODEL_DIR =os.path.join("saved_models")
 # Defining common constant variable for traning pipeline
 TARGET_COLUMN = "class"
 PIPELINE_NAME: str = "sensor"
@@ -55,8 +57,17 @@ MODEL_TRAINER_OVER_FIITING_UNDER_FITTING_THRESHOLD: float = 0.05
 
 
 """
+<<<<<<< HEAD
 Model Evaluation relate constants starts with MODEL_EVAL_var_name
 """
 MODEL_EVALUATION_DIR_NAME: str = "model_evaluation"
 MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
 MODEL_EVALUATION_REPORT_NAME= "report.yaml"
+=======
+Model Trainer ralated constant start with MODE TRAINER VAR NAME
+"""
+MODEL_EVALUATION_DIR_NAME: str = "model_evaluation"
+MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
+MODEL_EVALUATION_REPORT_NAME= "report.yaml"
+
+>>>>>>> c593cf0cd05d9bb24747d50a988be696f9ea7ef8
