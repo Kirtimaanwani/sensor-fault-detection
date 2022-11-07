@@ -2,7 +2,7 @@
 from sensor.exception import SensorException
 import os, sys
 from sensor.constant.training_pipeline import SAVED_MODEL_DIR,MODEL_FILE_NAME
-
+from sensor.logger import logging
 class TargetValueMapping:
     def __init__(self):
         self.neg: int = 0
@@ -50,6 +50,7 @@ class ModelResolver:
 
     def get_best_model_path(self,)->str:
         try:
+            logging.info("getting best model file path")
             timestamps = list(map(int,os.listdir(self.model_dir)))
             latest_timestamp = max(timestamps)
             latest_model_path= os.path.join(self.model_dir,f"{latest_timestamp}",MODEL_FILE_NAME)
@@ -59,18 +60,23 @@ class ModelResolver:
 
     def is_model_exists(self)->bool:
         try:
+            logging.info("Checking if model is already exists or not")
             if not os.path.exists(self.model_dir):
+                logging.info("saved model  directory not found")
                 return False
 
             timestamps = os.listdir(self.model_dir)
             if len(timestamps)==0:
+                logging.info("timestamp folder not found in saved models")
                 return False
             
             latest_model_path = self.get_best_model_path()
 
             if not os.path.exists(latest_model_path):
+                logging.info("Latest Model not found")
                 return False
 
+            logging.info("Model Exists")
             return True
         except Exception as e:
             raise e

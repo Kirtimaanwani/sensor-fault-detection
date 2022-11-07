@@ -32,10 +32,14 @@ class ModelEvaluation:
     
     def initiate_model_evaluation(self):
         try:
+            logging.info("initiating model evaluation")
+
+            logging.info("getting valid train and test file path")
             valid_train_file_path = self.data_validation_artifact.valid_train_file_path
             valid_test_file_path = self.data_validation_artifact.valid_test_file_path
 
             #valid train and test file dataframe
+            logging.info("reading train and test csv and concatinating it")
             train_df = pd.read_csv(valid_train_file_path)
             test_df = pd.read_csv(valid_test_file_path)
 
@@ -57,6 +61,7 @@ class ModelEvaluation:
                     trained_model_path=train_model_file_path, 
                     train_model_metric_artifact=self.model_trainer_artifact.test_metric_artifact, 
                     best_model_metric_artifact=None)
+                
                 logging.info(f"Model evaluation artifact: {model_evaluation_artifact}")
                 return model_evaluation_artifact
             
