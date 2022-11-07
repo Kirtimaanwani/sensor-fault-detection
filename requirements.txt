@@ -7,4 +7,5 @@ scipy
 dill
 imblearn==0.0
 xgboost==1.7.1
+shutil
 -e .
