@@ -30,7 +30,7 @@ class ModelEvaluation:
         
 
     
-    def initiate_model_eveluation(self):
+    def initiate_model_evaluation(self):
         try:
             valid_train_file_path = self.data_validation_artifact.valid_train_file_path
             valid_test_file_path = self.data_validation_artifact.valid_test_file_path

@@ -1,8 +1,10 @@
 # Have constants related only to the traning pipeline.
 
 import os
-from sensor.constant.s3_bucket import TRAINING_BUCKET_NAME
+# from sensor.constant.s3_bucket import TRAINING_BUCKET_NAME
 
+
+SAVED_MODEL_DIR =os.path.join("saved_models")
 # Defining common constant variable for traning pipeline
 TARGET_COLUMN = "class"
 PIPELINE_NAME: str = "sensor"
