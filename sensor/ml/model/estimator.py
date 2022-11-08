@@ -1,8 +1,9 @@
 
 from sensor.exception import SensorException
 import os, sys
-from sensor.constant.training_pipeline import SAVED_MODEL_DIR,MODEL_FILE_NAME
+from sensor.constant.training_pipeline import SAVED_MODEL_DIR, MODEL_FILE_NAME
 from sensor.logger import logging
+
 class TargetValueMapping:
     def __init__(self):
         self.neg: int = 0
@@ -80,4 +81,5 @@ class ModelResolver:
             return True
         except Exception as e:
             raise e
+
 

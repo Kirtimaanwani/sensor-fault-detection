@@ -14,7 +14,7 @@ class TrainingPipelineConfig:
         self.timestamp: str = timestamp
 
 
-class DataIngestionConfig():
+class DataIngestionConfig:
     
     def __init__(self, training_pipeline_config: TrainingPipelineConfig):
         logging.info("Creating DataIngestionConfig")
@@ -47,7 +47,7 @@ class DataIngestionConfig():
         self.collection_name: str = training_pipeline.DATA_INGESTION_COLLECTION_NAME
         
 
-class DataValidationConfig():
+class DataValidationConfig:
     
     def __init__(self, training_pipeline_config: TrainingPipelineConfig):
         logging.info("Creating DataValidationConfig")
@@ -80,7 +80,7 @@ class DataValidationConfig():
         )
 
 
-class DataTransformationConfig():
+class DataTransformationConfig:
     
     def __init__(self, training_pipeline_config: TrainingPipelineConfig):
         logging.info("Creating DataTransformationConfig")
@@ -108,7 +108,7 @@ class DataTransformationConfig():
                                                                 )
 
 
-class ModelTrainerConfig():
+class ModelTrainerConfig:
     
     def __init__(self, training_pipeline_config: TrainingPipelineConfig):
         self.model_trainer_dir: str = os.path.join(
@@ -131,10 +131,27 @@ class ModelEvaluationConfig:
     def __init__(self,training_pipeline_config:TrainingPipelineConfig):
         self.model_evaluation_dir: str = os.path.join(
                                                         training_pipeline_config.artifact_dir, 
-                                                            training_pipeline.MODEL_EVALUATION_DIR_NAME
-                                                    )
+                                                            training_pipeline.MODEL_EVALUATION_DIR_NAME)
+                                         
         self.report_file_path = os.path.join(self.model_evaluation_dir,
                                                 training_pipeline.MODEL_EVALUATION_REPORT_NAME)
         self.change_threshold = training_pipeline.MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
 
+
+class ModelPusherConfig:
+
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+        self.model_evaluation_dir: str = os.path.join(
+                                                         training_pipeline_config.artifact_dir,
+                                                            training_pipeline.MODEL_PUSHER_DIR_NAME
+        )
+        self.model_file_path = os.path.join(self.model_evaluation_dir,training_pipeline.MODEL_FILE_NAME)
+        
+        timestamp = round(datetime.now().timestamp())
+        
+        self.saved_model_path=os.path.join(
+                                            training_pipeline.SAVED_MODEL_DIR,
+                                                f"{timestamp}",
+                                                    training_pipeline.MODEL_FILE_NAME)
+    
 
