@@ -40,6 +40,8 @@ jobs:
 
 
   deployment:
+    requires:
+            - integration
     name: Continous-Deployment
     runs-on: ubuntu-latest
     steps:
