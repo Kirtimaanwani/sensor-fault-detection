@@ -137,3 +137,8 @@ credential/
 # Artifact
 ./artifact
 artifact/
+
+# logs
+*.log
+./logs
+logs/
