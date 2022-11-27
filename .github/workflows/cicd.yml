@@ -60,6 +60,8 @@ jobs:
       - name: Release
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku ps:scale worker=1
-             heroku ps:scale web=0
-             heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} worker 
+        run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} worker 
+        
+        # run: heroku ps:scale worker=1
+        # # run: heroku ps:scale web=0
+             
