@@ -16,6 +16,7 @@ wincertstore==0.2
 xgboost==1.6.2
 neuro-mf==0.0.5
 python-multipart
+from_root
 
 # dev
 pytest==7.1.3
