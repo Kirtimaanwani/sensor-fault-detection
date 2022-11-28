@@ -117,25 +117,14 @@ async def upload_csv(csv_file: UploadFile = File(...)):
 
 
 
-if __name__=="__main__":
-    # app_run(app, host=APP_HOST, port=APP_PORT)
-    app_run(app)
-
-
 # if __name__=="__main__":
-#     try:
-#         training_pipeline = TrainPipeline()
-#         training_pipeline.run_pipeline()
-
-#         from sensor.logger import LOG_FILE_PATH
-
-#         with open(file=LOG_FILE_PATH, mode="r") as txt:
-#             logs = txt.readall()
-
-#             print(logs)
-#     except Exception as e: 
-#         raise SensorException(e, sys)
+#     app_run(app, host=APP_HOST, port=APP_PORT)
+#     # app_run(app)
 
 
-
-
+if __name__=="__main__":
+    try:
+        training_pipeline = TrainPipeline()
+        training_pipeline.run_pipeline()
+    except Exception as e:
+        raise SensorException(e, sys)

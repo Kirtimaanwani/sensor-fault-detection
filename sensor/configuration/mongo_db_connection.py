@@ -2,7 +2,8 @@
 import pymongo
 import os
 from sensor.constant.database import DATABASE_NAME
-from sensor.constant.env_variable import MONGODB_URL_KEY
+# from sensor.constant.env_variable import MONGODB_URL_KEY
+from credential.CREDENTIAL import MONGO_DB_URL
 import certifi
 ca = certifi.where()
 
@@ -12,7 +13,7 @@ class MongoDBClient:
     def __init__(self, database_name=DATABASE_NAME) -> None:
         try:
             if MongoDBClient.client is None:
-                MONGO_DB_URL = os.getenv(MONGODB_URL_KEY)
+                # MONGO_DB_URL = os.getenv(MONGODB_URL_KEY)
                 MongoDBClient.client = pymongo.MongoClient(MONGO_DB_URL, tlsCAFile=ca)
             self.client = MongoDBClient.client
             self.database = self.client[database_name]
