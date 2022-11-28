@@ -23,7 +23,7 @@ SCHEMA_DROP_COLS = "drop_columns"  # used to write columns which are to be droop
 """ 
 Data Ingestion related constant start with DATA_INGESTION variable Name
 """
-DATA_INGESTION_COLLECTION_NAME:str = "consumer_sample_for_sensor" # same as ""from sensor.constant.database import COLLECTION_NAME""
+DATA_INGESTION_COLLECTION_NAME:str = "sample" # same as ""from sensor.constant.database import COLLECTION_NAME""
 DATA_INGESTION_DIR_NAME: str = "data_ingestion"
 DATA_INGESTION_FEATURE_STORE_DIR: str = "feature_store"
 DATA_INGESTION_INGESTED_DIR: str = "ingested"
