@@ -39,29 +39,29 @@ jobs:
   #       pytest
 
 
-  deployment:
-    # needs: integration
-    name: Continous-Deployment
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Login to Heroku Container registry
-        env: 
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+#   deployment:
+#     # needs: integration
+#     name: Continous-Deployment
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v1
+#       - name: Login to Heroku Container registry
+#         env: 
+#           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           
-        run: heroku container:login 
-      - name: Build and push
-        env:
-          MONGO_DB_URL: ${{ secrets.MONGO_DB_URL }}
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        # run: heroku ps:scale worker=1
-        # run: heroku ps:scale web=0
-        run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} worker 
-      - name: Release
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} worker 
+#         run: heroku container:login 
+#       - name: Build and push
+#         env:
+#           MONGO_DB_URL: ${{ secrets.MONGO_DB_URL }}
+#           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+#         # run: heroku ps:scale worker=1
+#         # run: heroku ps:scale web=0
+#         run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} worker 
+#       - name: Release
+#         env:
+#           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+#         run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} worker 
         
-        # run: heroku ps:scale worker=1
-        # # run: heroku ps:scale web=0
+#         # run: heroku ps:scale worker=1
+#         # # run: heroku ps:scale web=0
              
