@@ -17,6 +17,7 @@ xgboost==1.6.2
 neuro-mf==0.0.5
 python-multipart
 from_root
+gunicorn
 
 # dev
 pytest==7.1.3
