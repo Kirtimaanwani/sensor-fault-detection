@@ -26,14 +26,14 @@ The problem is to reduce the cost due to unnecessary repairs. So it is required 
 Before we run the project, make sure that you are having MongoDB in your local system, with Compass since we are using MongoDB for data storage.
 
 ## Data Collections
-![image](data%20pipeline.drawio.png)
+![image](./flowcharts/data%20pipeline.drawio.png)
 
 ## Project Architecture
-![image]()
+![image](./flowcharts/Project%20architecture.drawio.png)
 
 
 ## Deployment Architecture
-![image]()
+![image](./flowcharts/deployment%20architecture.drawio.png)
 
 
 ### Step 1: Clone the repository
